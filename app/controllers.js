@@ -1,5 +1,5 @@
-angular.module("myApp.controllers", []).controller("songCtrl", function($scope) {
-    $scope.songs = [];
+angular.module("myApp.controllers", []).controller("songCtrl", function($scope, songService) {
+    $scope.songs = songService.get();
                     
     $scope.newSong = { };
 
@@ -10,9 +10,19 @@ angular.module("myApp.controllers", []).controller("songCtrl", function($scope) 
         });
         $scope.newSong.artist = "";
         $scope.newSong.title = "";
-    }
+    };
+
+    $scope.deleteSong = function(idx) {
+        $scope.songs.splice(idx, 1);
+    };
 
     $scope.isEmpty = function(str) {
         return _.isBlank(str);
-    }
-})
+    };
+
+    $scope.$watch('songs', function(newValue, oldValue) {
+        if (newValue !== oldValue) {
+            songService.put($scope.songs);
+        }
+    }, true);
+});
