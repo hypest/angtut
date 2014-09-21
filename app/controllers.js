@@ -11,4 +11,8 @@ angular.module("myApp.controllers", []).controller("songCtrl", function($scope) 
         $scope.newSong.artist = "";
         $scope.newSong.title = "";
     }
+
+    $scope.isEmpty = function(str) {
+        return _.isBlank(str);
+    }
 })
