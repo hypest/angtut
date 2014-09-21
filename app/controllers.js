@@ -13,8 +13,11 @@ angular.module("myApp.controllers", []).controller("songCtrl", function($scope, 
         $scope.newSong.title = "";
     };
 
-    $scope.deleteSong = function(idx) {
-        $scope.songs.splice(idx, 1);
+    $scope.deleteSong = function(song) {
+        var idx = $scope.songs.indexOf(song);
+        if (idx >= 0) {
+            $scope.songs.splice(idx, 1);
+        }
     };
 
     $scope.isEmpty = function(str) {
