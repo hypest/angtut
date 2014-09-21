@@ -24,7 +24,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr ng-repeat="song in songs">
+          <tr ng-repeat="song in songs | orderBy:'-score'">
             <td>
               <div class="pull-left">
                 <strong>{{song.artist | titleize}}</strong><br/>
