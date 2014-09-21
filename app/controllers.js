@@ -6,7 +6,8 @@ angular.module("myApp.controllers", []).controller("songCtrl", function($scope, 
     $scope.addSong = function(artist, title) {
         $scope.songs.push({
             artist: artist,
-            title: title
+            title: title,
+            score: 0
         });
         $scope.newSong.artist = "";
         $scope.newSong.title = "";
