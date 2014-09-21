@@ -31,6 +31,10 @@ angular.module("myApp.directives", []). directive("rating", function() {
       return starClass;
     };
 
+    scope.setRating = function(idx) {
+      scope.score = idx + 1;
+    };
+
     scope.$watch('score', function(newValue, oldValue) {
       if (newValue !== null && newValue !== undefined) {
         scope.updateStars();
